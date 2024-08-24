@@ -10,16 +10,16 @@ def operar_carro(carro: Carro):
         op = int(input("Digite as opcoes[1-3]: "))
 
     if op == 1:
-        carro1.ligar()
+        carro.ligar()
     elif op == 2:
-        carro1.desligar()
+        carro.desligar()
     elif op == 3:
         v = float(input("Informe a velocidade: "))
         t = float(input("Informe o tempo: "))
-        carro1.acelerar(v, t)
+        carro.acelerar(v, t)
 
     print('Infos atuais do carro')
-    print(carro1)
+    print(carro)
 
 if __name__ == "__main__":
 
@@ -27,20 +27,25 @@ if __name__ == "__main__":
     nm_modelo = input('Digite o modelo: ')
     nm_marca = input('Digite a marca: ')
     nm_cor = input('Digite a cor: ')
+    litros = float(input('Informe o nível do tanque: '))
+    cm = float(input('Consumo medio: '))
 
-    carro1 = Carro(nm_modelo, nm_marca, nm_cor, 0, motor = False)
+    carro1 = Carro(nm_modelo, nm_marca, nm_cor, 0, False, litros, cm)
 
     print('Cadastre o segundo carro')
     nm_modelo = input('Digite o modelo: ')
     nm_marca = input('Digite a marca: ')
     nm_cor = input('Digite a cor: ')
+    litros = float(input('Informe o nível do tanque: '))
+    cm = float(input('Consumo medio: '))
 
-    carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, motor = False)
+    carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, False, litros, cm)
 
     '''
     Controlando o carro até ele atingir 10000 Km
     '''
-    while carro1.odometro < 600 and carro2.odometro < 600:
+    while carro1.odometro < 600 and carro2.odometro < 600 and \
+            (carro1.tanque > 0 or carro2.tanque > 0) :
         try:
             op_carro = 0
             while op_carro not in (1,2):
